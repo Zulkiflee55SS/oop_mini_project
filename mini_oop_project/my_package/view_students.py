@@ -9,7 +9,6 @@ class ViewStudentsWindow:
         self.master.title("ดูรายชื่อนักเรียน")
         self.master.geometry("1000x700")
 
-        # Style ตาราง
         style = ttk.Style()
         style.configure("Treeview", font=("Arial", 14))
         style.configure("Treeview.Heading", font=("Arial", 16, "bold"))
@@ -25,8 +24,6 @@ class ViewStudentsWindow:
             self.tree.column(col, width=160, anchor="center")
 
         self.tree.pack(fill="both", expand=True)
-
-        # --- ช่องใส่ ID สำหรับอัปเดต/ลบ ---
         input_frame = tk.Frame(master)
         input_frame.pack(pady=10)
 
@@ -39,8 +36,6 @@ class ViewStudentsWindow:
 
         update_button = tk.Button(input_frame, text="อัปเดต", font=("Arial", 14), bg="#4da6ff", fg="white", width=10, command=self.update_student)
         update_button.grid(row=0, column=3, padx=10)
-
-        # --- ช่องค้นหา/กรองข้อมูล ---
         filter_frame = tk.Frame(master)
         filter_frame.pack(pady=20)
 

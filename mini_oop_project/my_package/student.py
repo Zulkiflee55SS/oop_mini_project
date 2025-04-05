@@ -3,8 +3,7 @@ class Student:
         self.name = name
         self.department = department
         self.phone = phone
-        self.available_days = available_days  # list of strings
-        self.job_id = job_id
+        self.available_days = available_days 
 
     def save_to_db(self, db):
         available_str = ",".join(self.available_days)

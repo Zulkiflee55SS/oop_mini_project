@@ -20,24 +20,16 @@ class RegisterForm:
     def create_widgets(self):
         label_font = ("Arial", 14)
         entry_font = ("Arial", 14)
-        button_font = ("Arial", 14)
-
-        # ----------- INPUT: ชื่อ -----------  
+        button_font = ("Arial", 14) 
         tk.Label(self.root, text="ชื่อ-นามสกุล", font=label_font).pack(pady=5)
         self.entry_name = tk.Entry(self.root, width=40, font=entry_font)
         self.entry_name.pack(pady=5)
-
-        # ----------- INPUT: ชั้น/แผนก -----------  
         tk.Label(self.root, text="ชั้น/แผนก", font=label_font).pack(pady=5)
         self.entry_dept = tk.Entry(self.root, width=40, font=entry_font)
         self.entry_dept.pack(pady=5)
-
-        # ----------- INPUT: เบอร์โทร -----------  
         tk.Label(self.root, text="เบอร์โทร", font=label_font).pack(pady=5)
         self.entry_phone = tk.Entry(self.root, width=40, font=entry_font)
         self.entry_phone.pack(pady=5)
-
-        # ----------- CHECKBOX: วันว่าง -----------  
         tk.Label(self.root, text="เลือกวันว่าง", font=label_font).pack(pady=5)
         days_frame = tk.Frame(self.root)
         days_frame.pack(pady=5)
@@ -46,22 +38,14 @@ class RegisterForm:
             cb = tk.Checkbutton(days_frame, text=day, variable=var, font=entry_font)
             cb.pack(side=tk.LEFT, padx=5)
             self.day_vars[day] = var
-
-        # ----------- COMBOBOX: เลือกงานจาก DB -----------  
         tk.Label(self.root, text="เลือกงานที่สนใจ", font=label_font).pack(pady=5)
         self.job_combobox = ttk.Combobox(self.root, width=38, state="readonly", font=entry_font)
         self.job_combobox.pack(pady=5)
         self.load_jobs()
-
-        # ----------- ปุ่ม สมัคร -----------  
         tk.Button(self.root, text="สมัครงาน", command=self.submit_form,
                 bg="green", fg="white", font=button_font, width=15, height=1).pack(pady=10)
-
-        # ----------- ปุ่ม ย้อนกลับ -----------
         tk.Button(self.root, text="ย้อนกลับ", command=self.root.destroy,
-                bg="gray", fg="white", font=button_font, width=15, height=2).pack(pady=5)
-
-        # ----------- ปุ่ม ออกจากโปรแกรม -----------  
+                bg="gray", fg="white", font=button_font, width=15, height=2).pack(pady=5) 
         tk.Button(self.root, text="ออกจากโปรแกรม", command=self.root.quit,
                 bg="red", fg="white", font=button_font, width=15, height=1).pack(pady=5)
 
@@ -72,12 +56,12 @@ class RegisterForm:
             query = "SELECT job_id, job_name FROM jobs"
             jobs = db.fetch_all(query)
             if jobs:
-                self.jobs_dict = {}  # ✅ เพิ่มบรรทัดนี้
+                self.jobs_dict = {} 
                 job_names = []
 
                 for job in jobs:
                     job_id, job_name = job
-                    self.jobs_dict[job_name] = job_id  # ✅ เก็บ job_name -> job_id
+                    self.jobs_dict[job_name] = job_id
                     job_names.append(job_name)
 
                 self.job_combobox['values'] = job_names
@@ -87,7 +71,6 @@ class RegisterForm:
             db.close()
         except Exception as e:
             messagebox.showerror("ข้อผิดพลาด", f"เกิดข้อผิดพลาดในการดึงข้อมูลงาน: {str(e)}")
-
 
 
 
