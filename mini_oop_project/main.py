@@ -8,7 +8,7 @@ def show_register():
 def show_viewer():
     top = tk.Toplevel(root)
     ViewStudentsWindow(top)
-if __name__ == "__main__":
+def main():
     root = tk.Tk()
     root.title("ระบบลงทะเบียนงานพิเศษ")
     root.geometry("400x300")
@@ -18,3 +18,5 @@ if __name__ == "__main__":
     tk.Button(root, text="ออกจากโปรแกรม", command=root.quit, bg="red", fg="white", font=("Arial", 14)).pack(pady=20)
 
     root.mainloop()
+if __name__ == '__main__':
+    main()
